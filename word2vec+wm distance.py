@@ -4,6 +4,7 @@ from nltk.tokenize import RegexpTokenizer
 tokenizer = RegexpTokenizer(r'\w+')
 from nltk.stem.porter import *
 from nltk.corpus import stopwords
+nltk.download('stopwords')
 stop_words = set(stopwords.words('english')) 
 from nltk.stem.porter import *
 from nltk.stem import WordNetLemmatizer
