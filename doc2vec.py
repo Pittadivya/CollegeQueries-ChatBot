@@ -4,6 +4,7 @@ from nltk.tokenize import RegexpTokenizer
 tokenizer = RegexpTokenizer(r'\w+')
 from nltk.stem.porter import *
 from nltk.corpus import stopwords
+nltk.download('stopwords')
 stop_words = set(stopwords.words('english')) 
 from nltk.stem.porter import *
 from nltk.stem import WordNetLemmatizer
@@ -86,14 +87,14 @@ model = Doc2Vec(size=vec_size,
                 dm =1)
 model.build_vocab(tagged_data)
 for epoch in range(max_epochs):
-    #print('iteration {0}'.format(epoch))
     model.train(tagged_data,
                 total_examples=model.corpus_count,
-                epochs=model.iter)
+                epochs=1)  # Use epochs=1 for each iteration
     # decrease the learning rate
     model.alpha -= 0.0002
     # fix the learning rate, no decay
     model.min_alpha = model.alpha
+
 
 model.save("d2v.model")
 print("Model Saved")
